@@ -7,6 +7,8 @@
 - Fichier csv "raw_tracks.csv" : Ressemble beaucoup au fichier "tracks" il contient en plus des informations sur l'id du track, le nom de l'artiste et le genre du track
 
 - Fichier csv "raw_genres.csv" : Ressemble beaucoup au fichier "genres" donc pas besoin non plus !
-- Fichier csv "genres.csv" : 
+- Fichier csv "genres.csv" : Pas de lien de jointure possible
+
+=> Nous pensons qu'il ne sera pas possible d'effectuer de jointures entre la table "universal_top_spotify_song" et FMA
 
 
