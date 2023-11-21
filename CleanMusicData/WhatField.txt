@@ -2,4 +2,4 @@
 
 - Fichier csv "features.csv" : Données provenant de la librairie python "librosa" qui analyse le spectre des chansons donc pas besoin dans notre étude !
 
-- 
+- Fichier csv "tracks.csv" : Contient les informations sur les chansons, leurs date de creation, poducteurs,compositeur, la localisation (ville) avec longitude/latitude et le genre 
