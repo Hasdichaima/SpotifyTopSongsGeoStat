@@ -5,6 +5,8 @@
 - Fichier csv "tracks.csv" : Contient les informations sur les chansons, leurs date de creation, poducteurs,compositeur, la localisation (ville) avec longitude/latitude et le genre 
 
 - Fichier csv "raw_genres.csv" : Ressemble beaucoup au fichier "genres" donc pas besoin non plus !
-- Fichier csv "genres.csv" : 
+- Fichier csv "genres.csv" : Pas de lien de jointure possible
+
+=> Nous pensons qu'il ne sera pas possible d'effectuer de jointures entre la table "universal_top_spotify_song" et FMA
 
 
