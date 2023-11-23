@@ -1,0 +1,11 @@
+Première étape : Nettoyer les différents fichiers .csv de FMA du dossier "data" (supprimer les premières lignes inutiles par exemple)
+puis recréer un fichier .csv final de ce fichier une fois nettoyé dans le dossier "CleanMusicData"
+
+Deuxième étape : analyser les différents attributs des fichiers et choisir ceux à garder
+- Vérifier la présence d'une clé de jointure avec "universal_top_spotify_songs.csv 
+S'il n'y en a pas, il n'est pas possible de garder le fichier.
+- Récapituler les différents noms de champ, leur type ainsi que la clé de jointure dans le fichier starUML appelé "projet_data.mdj" pour avoir un rendu plus visuel.
+
+Troisième étape : Faire des analyses globales (à définir)
+
+Quatrième étape (à définir) : Méthode ACP, Régression linéaire, IA prédiction sur les futurs rangs, analyse spatiale, ...
