@@ -1,3 +1,5 @@
+Attention: les fichiers FMA "tracks.csv" et "raw_tracks.csv" sont trop lourds pour être transférés sur github.
+
 Première étape : Nettoyer les différents fichiers .csv de FMA du dossier "data" (supprimer les premières lignes inutiles par exemple)
 puis recréer un fichier .csv final de ce fichier une fois nettoyé dans le dossier "CleanMusicData"
 
