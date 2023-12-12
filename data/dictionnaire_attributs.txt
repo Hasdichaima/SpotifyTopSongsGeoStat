@@ -1,0 +1,23 @@
+# Nom de l'attribut : [type de données, description de l'attribut, plage de valeur autorisée, valeur interdite]
+
+UniversalTopSpotifySong{
+    "country" : [str, nom du pays, "Algeria, Australia, France ", ..],
+    "spotify_id" : [str, unique identifiant de la chanson dans la base de donnée Spotify, "", ""],
+    "name" : [str, titre de la chanson, "",""],
+    "artists" : [str, nom de/des artistes associé(s) à la chanson, "", ""],
+    "daily_rank" : [int, rang journalier de la chanson dans la liste des 50 meilleures, "de 1 à 50", "inférieur à 0 ou supérieur 50"],
+    "snapshot_date" :[str, date à laquelle la donnée a été collectée depuis l’API Spotify, "", ""],
+    "is_explicit" : [bool,  indique si la chanson contient des paroles non conseillées aux jeunes (sexuel, violence ..), "", ""],
+    "duration_ms" : [int, durée de la chanson en millisecondes, "", ""],
+    "danceability" : [float, mesure de la “possibilité de pouvoir danser” sur la chanson basée sur divers éléments musicaux comme le tempo, la stabilité rythmique, la force des percussions (beat strength) et la régularité de la chanson, "de 0 (least danceable) à 1 (most danceable", "inférieur à 0 ou supérieur à 1"],
+    "popularity" : [int, mesure de la popularité actuelle de la chanson sur Spotify, "de 0 à 100", "inférieur à 0 et supérieur à 100"],
+    "energy" : [float, mesure de l’énergie de la chanson soit son niveau d’intensité et d’activité. Les chansons considérées comme énergiques sont fortes, bruyantes et rapides, "de 0 (batch prelude) à 1 (death mental)", "inférieur à 0 ou supérieur à 1"],
+    "key" : [int,  clé de l’hauteur musicale majoritaire de la chanson, "de 0 à 11", "inférieur à 0 ou supérieur à 11"],
+    " ?? loudness" : [float, mesure de l’intensité sonore de la chanson en dB. Correspond généralement à la sensation de volume que nous percevons. Plus le loudness est élevé, plus le son est fort, "", ""],
+    "mode" : [int, le mode le plus couramment utilisé est le mode majeur, qui crée une atmosphère lumineuse et joyeuse. Le mode mineur est également largement utilisé et donne une sensation plus sombre ou mélancolique à une chanson, "de 0 (Minor) à 1 (Major)", "inférieur à 0 ou supérieur à 1"],
+    "speechiness" : [float, mesure de la présence de parole dans la chanson, "de 0 à 1 ( > 0.66 : la chanson comporte majoritairement des paroles; entre 0.33 et 0.66 : la chanson contient à la fois des paroles et de la musique; < 0.33 : la chanson contient majoritairement de la musique)", "inférieur à 0 ou supérieur à 1"],
+    "acousticness" : [float, mesure de la qualité acoustique de la chanson, "de 0 (musique non acoustique) à 1 (musique acoustique)", "inférieur à 0 ou supérieur à 1"],
+    "instr"
+    ""
+
+}
