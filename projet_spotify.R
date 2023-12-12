@@ -27,6 +27,7 @@ isoCodes <- read.csv('codeISOpays.csv', sep=';')
 hdiCountries <- read.csv('HDR21-22_Statistical_Annex_HDI_.csv', sep=';')
 spotifydb <- read.csv('universal_top_spotify_songs.csv')
 
+
 # Fusionner les données de spotify et codeIso 
 spotifyIso <- merge(spotifydb, isoCodes, by.x ="country", by.y ="alpha2", all = TRUE)
 
@@ -39,6 +40,15 @@ spotifyIsoHDI <- merge(data_spotify_Iso, hdiCountries, by.x = "noms_en_gb", by.y
 #Resultat de la jointure entre la table data_spotify_Iso et la table des HDI par pays
 data_spotify_Iso_HDI <- spotifyIsoHDI %>% filter(!is.na(spotify_id) & spotify_id != "")
 
+# Sauvegarder le dataframe en tant que fichier CSV
+write.csv(data_spotify_Iso_HDI, file = "spotify_ISO_IDH.csv", row.names = FALSE)
 
+# Filtrer les enregistrements ayant une valeur nulle
+filtered_data <- data_spotify_Iso_HDI %>% filter(is.na(Value) | Value == "")
+
+# Regrouper les données filtrées par noms_en_gb et compter les occurrences
+grouped_data <- filtered_data %>%
+  group_by(noms_en_gb) %>%
+  summarise(count = n())
 
 #Le jeu de données qui nous intéresse est "data_spotify_Iso_HDI" puisqu'il contient les informations de la table intiale spotify avec l'idh de chaque pays et son code ISO associé
