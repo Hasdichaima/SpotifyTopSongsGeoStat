@@ -1,0 +1,19 @@
+Attention: les fichiers FMA "tracks.csv" et "raw_tracks.csv" sont trop lourds pour être transférés sur github.
+
+1) Nettoyer les différents fichiers .csv de FMA du dossier "data" (supprimer les premières lignes inutiles par exemple) si besoin
+puis recréer un fichier .csv final de ce fichier une fois nettoyé dans le dossier "CleanMusicData"
+
+2) Recherche table csv des codes ISO alpha2 des pays du monde 
+--> https://sql.sh/514-liste-pays-csv-xml#google_vignette
+
+3) Faire la jointure entre "universal_top_spotify_songs.csv" et "codeISOpays.csv" avec comme
+clé de jointure le nom des pays
+
+4) Analyser les différents attributs des fichiers et choisir ceux à garder
+- Vérifier la présence d'une clé de jointure avec "universal_top_spotify_songs.csv 
+S'il n'y en a pas, il n'est pas possible de garder le fichier.
+- Récapituler les différents noms de champ, leur type ainsi que la clé de jointure dans le fichier starUML appelé "projet_data.mdj" pour avoir un rendu plus visuel.
+
+5) Faire des analyses globales (à définir)
+
+6) (à définir) : Méthode ACP, Régression linéaire, IA prédiction sur les futurs rangs, analyse spatiale, ...
