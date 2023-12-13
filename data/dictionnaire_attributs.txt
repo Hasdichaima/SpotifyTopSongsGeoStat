@@ -1,23 +1,72 @@
-# Nom de l'attribut : [type de données, description de l'attribut, plage de valeur autorisée, valeur interdite]
+# Fichier.csv{ 
+#   Nom de l'attribut : [type de données ; description de l'attribut ; "plage de valeur autorisée" ; "valeur interdite"]
+#}
+
 
 UniversalTopSpotifySong{
-    "country" : [str, nom du pays, "Algeria, Australia, France ", ..],
-    "spotify_id" : [str, unique identifiant de la chanson dans la base de donnée Spotify, "", ""],
-    "name" : [str, titre de la chanson, "",""],
-    "artists" : [str, nom de/des artistes associé(s) à la chanson, "", ""],
-    "daily_rank" : [int, rang journalier de la chanson dans la liste des 50 meilleures, "de 1 à 50", "inférieur à 0 ou supérieur 50"],
-    "snapshot_date" :[str, date à laquelle la donnée a été collectée depuis l’API Spotify, "", ""],
-    "is_explicit" : [bool,  indique si la chanson contient des paroles non conseillées aux jeunes (sexuel, violence ..), "", ""],
-    "duration_ms" : [int, durée de la chanson en millisecondes, "", ""],
-    "danceability" : [float, mesure de la “possibilité de pouvoir danser” sur la chanson basée sur divers éléments musicaux comme le tempo, la stabilité rythmique, la force des percussions (beat strength) et la régularité de la chanson, "de 0 (least danceable) à 1 (most danceable", "inférieur à 0 ou supérieur à 1"],
-    "popularity" : [int, mesure de la popularité actuelle de la chanson sur Spotify, "de 0 à 100", "inférieur à 0 et supérieur à 100"],
-    "energy" : [float, mesure de l’énergie de la chanson soit son niveau d’intensité et d’activité. Les chansons considérées comme énergiques sont fortes, bruyantes et rapides, "de 0 (batch prelude) à 1 (death mental)", "inférieur à 0 ou supérieur à 1"],
-    "key" : [int,  clé de l’hauteur musicale majoritaire de la chanson, "de 0 à 11", "inférieur à 0 ou supérieur à 11"],
-    " ?? loudness" : [float, mesure de l’intensité sonore de la chanson en dB. Correspond généralement à la sensation de volume que nous percevons. Plus le loudness est élevé, plus le son est fort, "", ""],
-    "mode" : [int, le mode le plus couramment utilisé est le mode majeur, qui crée une atmosphère lumineuse et joyeuse. Le mode mineur est également largement utilisé et donne une sensation plus sombre ou mélancolique à une chanson, "de 0 (Minor) à 1 (Major)", "inférieur à 0 ou supérieur à 1"],
-    "speechiness" : [float, mesure de la présence de parole dans la chanson, "de 0 à 1 ( > 0.66 : la chanson comporte majoritairement des paroles; entre 0.33 et 0.66 : la chanson contient à la fois des paroles et de la musique; < 0.33 : la chanson contient majoritairement de la musique)", "inférieur à 0 ou supérieur à 1"],
-    "acousticness" : [float, mesure de la qualité acoustique de la chanson, "de 0 (musique non acoustique) à 1 (musique acoustique)", "inférieur à 0 ou supérieur à 1"],
-    "instr"
-    ""
+    "country" : [str ; nom du pays ; "Algeria, Australia, France " ; "" ; ""],
+    "spotify_id" : [str ; unique identifiant de la chanson dans la base de donnée Spotify ; "" ; ""],
+    "name" : [str ; titre de la chanson ; "" ; ""],
+    "artists" : [str ; nom de/des artistes associé(s) à la chanson ; "" ; ""],
+    "daily_rank" : [int ; rang journalier de la chanson dans la liste des 50 meilleures ; "de 1 à 50" ; "inférieur à 0 ou supérieur 50"],
+    "snapshot_date" :[str ; date à laquelle la donnée a été collectée depuis l’API Spotify ; "" ; ""],
+    "is_explicit" : [bool ;  indique si la chanson contient des paroles non conseillées aux jeunes (sexuel, violence ..) ; "" ; ""],
+    "duration_ms" : [int ; durée de la chanson en millisecondes ; "" ; ""],
+    "danceability" : [float ; mesure de la “possibilité de pouvoir danser” sur la chanson basée sur divers éléments musicaux comme le tempo, la stabilité rythmique, la force des percussions (beat strength) et la régularité de la chanson ; "de 0 (least danceable) à 1 (most danceable)" ; "inférieur à 0 ou supérieur à 1"],
+    "popularity" : [int ; mesure de la popularité actuelle de la chanson sur Spotify ; "de 0 à 100" ; "inférieur à 0 et supérieur à 100"],
+    "energy" : [float ; mesure de l’énergie de la chanson soit son niveau d’intensité et d’activité. Les chansons considérées comme énergiques sont fortes, bruyantes et rapides ; "de 0 (batch prelude) à 1 (death mental)" ; "inférieur à 0 ou supérieur à 1"],
+    "key" : [int ; clé de l’hauteur musicale majoritaire de la chanson ; "de 0 à 11" ; "inférieur à 0 ou supérieur à 11"],
+    " ?? loudness" : [float ; mesure de l’intensité sonore de la chanson en dB. Correspond généralement à la sensation de volume que nous percevons. Plus le loudness est élevé, plus le son est fort ; "" ; ""],
+    "mode" : [int ; le mode le plus couramment utilisé est le mode majeur, qui crée une atmosphère lumineuse et joyeuse. Le mode mineur est également largement utilisé et donne une sensation plus sombre ou mélancolique à une chanson ; "de 0 (Minor) à 1 (Major)" ; "inférieur à 0 ou supérieur à 1"],
+    "speechiness" : [float ; mesure de la présence de parole dans la chanson ; "de 0 à 1 ( > 0.66 : la chanson comporte majoritairement des paroles / entre 0.33 et 0.66 : la chanson contient à la fois des paroles et de la musique / < 0.33 : la chanson contient majoritairement de la musique)" ; "de 0 à 1" ; "inférieur à 0 ou supérieur à 1"],
+    "acousticness" : [float ; mesure de la qualité acoustique de la chanson ; "de 0 (musique non acoustique) à 1 (musique acoustique)" ; "inférieur à 0 ou supérieur à 1"],
+    "instrumentalness" : [float ; représente le nombre de voix dans la chanson. Plus proche on est de 1, le plus probable la chanson ne contient pas de voix ; "de 0 à 1" ; "inférieur à 0 ou supérieur à 1"],
+    "liveness" : [float ; décrit la probabilité que la chanson ait été enregistrée en live ; "de 0 à 1 ( > 0.8 : grande probabilité que la chanson soit enregistré en live)" ; "inférieur à 0 ou supérieur à 1"],
+    "valence" : [float ; mesure de la positivité d'une chanson ; de 0 (musique à tendance négative comme de la tristesse, de la colère) à 1 (musique à tendance positive comme l’euphorie, la joie, la gratitude)" ; "inférieur à 0 ou supérieur à 1"],
+    "tempo" : [float ; nombre de beats/min soit la vitesse de la chanson ; "" ; "" ]
+}
 
+codeISOpays{
+    "alpha2" : [str ; code alphabétiques du pays ; "DZ/FR .." ; ""],
+    "nom_fr_fr" : [str ; nom du pays en français ; "" ; ""],
+    "noms_en_gb" : [str ; nom du pays en anglais ; "" ; ""]
+}
+
+HDR21-22_Statistical_Annex_HDI{
+    "Country" : [str ; nom des pays ; "" ; ""],
+    "HDI_rank" : [int ; classement du pays en fonction de l'IDH ; "" ; ""],
+    "HDI_value" : [float ; valeur de l'IDH ; de 0 à 1 (plus il est proche de 1 plus le niveau de développement du pays est élevé) ; inférieur à 0 ou supérieur à 1]
+}
+
+tracks{
+    "track_id" : [int ; identifiant de la chanson ; "" ; "" ],
+    "latitude_artist" : [float ; on suppose qu'il s'agit de la latitude de la localisation de l'artiste ; "" ; ""],
+    "location_artist" : [str ; nom de la ville ou pays de l'artiste ; "" ; ""],
+    "longitude_artist" : [float ; on suppose qu'il s'agit de la longitude de la localisation de l'artiste ; "" ; ""],
+    "name_artist" : [str ; nom de l'artiste ; "" ; ""],
+    "date_recorded" : [date ; date de l'enregistrement de la chanson ; "année/mois/jour" ; ""],
+    "duration_sec" : [int ; durée en seconde de la chanson ; "" ; ""],
+    "favorites" : [int ; nombre de mise en favoris de la chanson sur FMA ; "" ; ""],
+    "genre_top" : [str ; genre prédominant de la chanson ; "Hip-Hop/Top/Rock ..." ; ""]
+    "genres" : [int ; code du/des genre(s) de la chanson ; "" ; ""],
+    "language_code" : [str ; langue utilisée dans la chanson ; "en/fr .." ; ""],
+    "listens" : [int ; nombres d'écoutes de la chanson sur FMA ; "" ; ""],
+    "title" : [str ; titre de la chanson ; "" ; ""]
+}
+
+raw_tracks{
+    "track_id" : [int ; identifiant de la chanson ; "" ; ""],
+    "track_explicit" : [str ; indique si la chanson contient des injures, un langage ou un art généralement considéré comme de nature sexuelle, violente ou offensante ; "" ; ""]
+}
+
+echonest{
+    "track_id" : [int ; identifiant de la chanson ; "" ; ""],
+    "acousticness" : [float ; mesure de la qualité acoustique de la chanson ; "de 0 (musique non acoustique) à 1 (musique acoustique)" ; "inférieur à 0 ou supérieur à 1"],
+    "danceability" : [float ; mesure de la “possibilité de pouvoir danser” sur la chanson basée sur divers éléments musicaux comme le tempo, la stabilité rythmique, la force des percussions (beat strength) et la régularité de la chanson ; "de 0 (least danceable) à 1 (most danceable)" ; "inférieur à 0 ou supérieur à 1"],
+    "energy" : [float ; mesure de l’énergie de la chanson soit son niveau d’intensité et d’activité. Les chansons considérées comme énergiques sont fortes, bruyantes et rapides ; "de 0 (batch prelude) à 1 (death mental)" ; "inférieur à 0 ou supérieur à 1"],
+    "instrumentalness" : [float ; représente le nombre de voix dans la chanson. Plus proche on est de 1, le plus probable la chanson ne contient pas de voix ; "de 0 à 1" ; "inférieur à 0 ou supérieur à 1"],
+    "liveness" : [float ; décrit la probabilité que la chanson ait été enregistrée en live ; "de 0 à 1 ( > 0.8 : grande probabilité que la chanson soit enregistré en live)" ; "inférieur à 0 ou supérieur à 1"],
+    "speechiness" : [float ; mesure de la présence de parole dans la chanson ; "de 0 à 1 ( > 0.66 : la chanson comporte majoritairement des paroles / entre 0.33 et 0.66 : la chanson contient à la fois des paroles et de la musique / < 0.33 : la chanson contient majoritairement de la musique)" ; "de 0 à 1" ; "inférieur à 0 ou supérieur à 1"],
+    "tempo" : [float ; nombre de beats/min soit la vitesse de la chanson ; "" ; "" ],
+    "valence" : [float ; mesure de la positivité d'une chanson ; de 0 (musique à tendance négative comme de la tristesse, de la colère) à 1 (musique à tendance positive comme l’euphorie, la joie, la gratitude)" ; "inférieur à 0 ou supérieur à 1"]
 }
