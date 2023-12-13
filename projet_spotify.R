@@ -1,7 +1,13 @@
-setwd("E:/ING3/Projet Proba Stat/Cleaned Data")
+#Chemin absolus d'accès au projet Github
+cheminAccesProjetGithub = "E:/COURS ING3/Projet Geostat/" #a modifier
+setwd(cheminAccesProjetGithub)
+
+#installation des librairies utilisées dans le script
 #install.packages("ggplot2")
 #install.packages("ggmap")
+#install.packages("dplyr")
 
+#librairies utilisées
 library(ggplot2)
 library(ggmap)
 library(dplyr)
@@ -29,13 +35,23 @@ spotifydb <- read.csv('universal_top_spotify_songs.csv')
 
 
 # Fusionner les données de spotify et codeIso 
-spotifyIso <- merge(spotifydb, isoCodes, by.x ="country", by.y ="alpha2", all = TRUE)
+spotifyIso <- merge(
+  x = spotifydb, 
+  y = isoCodes[,c("alpha2", "nom_fr_fr", "noms_en_gb")], 
+  by.x ="country", 
+  by.y ="alpha2", 
+  all.x = TRUE)
 
 #Resultat de la jointure entre la table spotify et la table des codes ISO
 data_spotify_Iso <- spotifyIso %>% filter(!is.na(spotify_id) & spotify_id != "")
 
 # Fusionner les données de spotify join à code ISO et les données sur l'IDH des pays
-spotifyIsoHDI <- merge(data_spotify_Iso, hdiCountries, by.x = "noms_en_gb", by.y = "Country", all = TRUE)
+spotifyIsoHDI <- merge(
+  x = data_spotify_Iso, 
+  y = hdiCountries[,c("Country", "HDI_rank", "Human Development Index")], 
+  by.x = "noms_en_gb", 
+  by.y = "Country", 
+  all.x = TRUE)
 
 #Resultat de la jointure entre la table data_spotify_Iso et la table des HDI par pays
 data_spotify_Iso_HDI <- spotifyIsoHDI %>% filter(!is.na(spotify_id) & spotify_id != "")
