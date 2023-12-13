@@ -1,4 +1,4 @@
-#setwd("E:/ING3/Projet Proba Stat/Cleaned Data")
+setwd("E:/ING3/Projet Proba Stat/Cleaned Data")
 #install.packages("ggplot2")
 #install.packages("ggmap")
 
@@ -24,7 +24,7 @@ print(p)
 
 # Charger les données sur l'indice de développement humain des pays et table des codes iso des pays
 isoCodes <- read.csv('codeISOpays.csv', sep=';')
-hdiCountries <- read.csv('HDR21-22_Statistical_Annex_HDI_.csv', sep=';')
+hdiCountries <- read.csv('HDR21-22_Statistical_Annex_HDI.csv', sep=';')
 spotifydb <- read.csv('universal_top_spotify_songs.csv')
 
 
@@ -44,7 +44,7 @@ data_spotify_Iso_HDI <- spotifyIsoHDI %>% filter(!is.na(spotify_id) & spotify_id
 write.csv(data_spotify_Iso_HDI, file = "spotify_ISO_IDH.csv", row.names = FALSE)
 
 # Filtrer les enregistrements ayant une valeur nulle
-filtered_data <- data_spotify_Iso_HDI %>% filter(is.na(Value) | Value == "")
+filtered_data <- data_spotify_Iso_HDI %>% filter(is.na(HDI_value) | HDI_value == "")
 
 # Regrouper les données filtrées par noms_en_gb et compter les occurrences
 grouped_data <- filtered_data %>%
