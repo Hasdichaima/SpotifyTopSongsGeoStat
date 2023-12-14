@@ -53,3 +53,6 @@ tracks_join_final_noNA <- tracks_join_final %>% filter(
   !is.na(tempo) &
   !is.na(valence)
 )
+
+# Sauvegarder le dataframe "tracks_join_final_noNA" en tant que fichier CSV
+write.csv(tracks_join_final_noNA, file = "tracks_final_noNA.csv", row.names = FALSE)
