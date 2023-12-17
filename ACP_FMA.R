@@ -1,3 +1,10 @@
+#Librairies utilisées
+library(magrittr)
+library(dplyr)
+library(GGally)
+library(ggplot2)
+library(ade4)
+library(factoextra)
 
 #Lecture fichier csv 
 tracks_final_noNA = read.csv(
@@ -22,32 +29,25 @@ tracks_final_noNA_num <- tracks_final_noNA_num %>%
 
 #Visualiser les données résultantes
 View(tracks_final_noNA_num)
-#---------------------------------------- A CONTINUER ----------------------------------
-# nuage de points 2 à 2
-plot(data_penguins_num)
 
-# matrice de corrélation des 4 variables
-cor(data_penguins_num)
+# nuage de points 2 à 2
+plot(tracks_final_noNA_num)
+
+# matrice de corrélation des variables
+cor(tracks_final_noNA_num)
 
 # histogramme (cas bcp variables)
-for (n in names(data_penguins_num)) {
-  lili <- pull(data_penguins_num, n)
+for (n in names(tracks_final_noNA_num)) {
+  lili <- pull(tracks_final_noNA_num, n)
   hist(lili)
 }
 
-# Correlogramme des variables numérique du dataset penguins
-ggpairs(data_penguins_num)
-# => On remarque de bonnes corrélations entre les variables 
-# et des nuages de points où la RL peut y être appliqués 
-# et d'autres sous formes de groupes.
-# il y a deux modalités pour la flipper_length
+# Correlogramme des variables numérique du dataset FMA
+ggpairs(tracks_final_noNA_num)
 
-## Q3 : Préparation des données
-#Sélection variables numériques liées à la morpho des animaux
-dataACP <- data_penguins_num
+dataACP <- tracks_final_noNA_num
 View(dataACP)
 
-## Q4
 mat_var_cov <- var(dataACP)
 mat_var_cov
 #sur la diagonale, les variances individuelles 
@@ -58,34 +58,16 @@ didi <- diag(mat_var_cov)
 #somme des variances
 sum(didi)
 
-##Q4 bis
-#fonction qui centre et rédut un vecteur de variables
-center_reduce <- function(x){
-  avg <- mean(x, na.rm = TRUE)
-  ET <- sd(x)
-  return((x-avg)/ET)
-}
-
-#test fonction "center_reduce"
-center_reduce(c(1,2,3,58))
-
-#calcul de la var d'une variable centrée & réduite
-bill_length_reduite <- center_reduce(dataACP$bill_length_mm)
-var(bill_length_reduite)
-# => Cela vaut 1
-
-## Q5
 #Calcul ACP
 resultACP <- dudi.pca(dataACP)
-resultACP <- dudi.pca(dataACP, nf = 2, scannf = FALSE)
+resultACP <- dudi.pca(dataACP, nf = 3, scannf = FALSE, scale = T )
 resultACP
 
 #Valeurs propres
 resultACP$eig
 #inertie
 inertietot <- sum(resultACP$eig)
-#part d'inertie
-# ... à compléter
+inertietot
 
 #Extraction valeurs propres/variances composantes principales
 get_eigenvalue(resultACP)
