@@ -1,0 +1,74 @@
+"noms_en_gb","country","moyenne_tempo","id","code","alpha3","nom_fr_fr","HDI_rank","HDI_value"
+"Argentina","AR",114.330510909091,10,32,"ARG","Argentine",47,0.842
+"Australia","AU",124.252027173913,11,36,"AUS","Australie",5,0.951
+"Austria","AT",125.304265822785,12,40,"AUT","Autriche",25,0.916
+"Belarus","BY",123.223742753623,34,112,"BLR","Bélarus",60,0.808
+"Belgium","BE",127.270147005445,18,56,"BEL","Belgique",13,0.937
+"Bolivia","BO",124.27398185118,21,68,"BOL","Bolivie",118,0.692
+"Brazil","BR",133.083466424682,25,76,"BRA","Brésil",87,0.754
+"Bulgaria","BG",133.601030797101,31,100,"BGR","Bulgarie",68,0.795
+"Canada","CA",123.964317028986,37,124,"CAN","Canada",15,0.936
+"Chile","CL",111.819502722323,43,152,"CHL","Chili",42,0.855
+"Colombia","CO",118.615059782609,48,170,"COL","Colombie",88,0.752
+"Costa Rica","CR",123.049501811594,54,188,"CRI","Costa Rica",58,0.809
+"Czech Republic","CZ",130.572192727273,58,203,"CZE","République Tchèque",32,0.889
+"Denmark","DK",117.732656987296,60,208,"DNK","Danemark",6,0.948
+"Dominican Republic","DO",123.208972875226,62,214,"DOM","République Dominicaine",80,0.767
+"Ecuador","EC",120.686451905626,63,218,"ECU","Équateur",95,0.74
+"Egypt","EG",120.928362976407,227,818,"EGY","Égypte",97,0.731
+"El Salvador","SV",122.531157608696,64,222,"SLV","El Salvador",125,0.675
+"Estonia","EE",125.473996370236,68,233,"EST","Estonie",31,0.89
+"Finland","FI",117.314652727273,73,246,"FIN","Finlande",11,0.94
+"France","FR",124.658667876588,75,250,"FRA","France",28,0.903
+"Germany","DE",126.256453720508,84,276,"DEU","Allemagne",9,0.942
+"Greece","GR",111.005329113924,88,300,"GRC","Grèce",33,0.887
+"Guatemala","GT",126.02089673913,93,320,"GTM","Guatemala",135,0.627
+"Honduras","HN",121.812376130199,99,340,"HND","Honduras",137,0.621
+"Hong Kong","HK",133.510898734177,100,344,"HKG","Hong-Kong",4,0.952
+"Hungary","HU",116.250833333333,101,348,"HUN","Hongrie",46,0.846
+"Iceland","IS",120.81509057971,102,352,"ISL","Islande",3,0.959
+"India","IN",108.292148820327,103,356,"IND","Inde",132,0.633
+"Indonesia","ID",117.709713248639,104,360,"IDN","Indonésie",114,0.705
+"Ireland","IE",125.18247826087,107,372,"IRL","Irlande",8,0.945
+"Israel","IL",121.341094202899,108,376,"ISR","Israël",22,0.919
+"Italy","IT",115.766156079855,109,380,"ITA","Italie",30,0.895
+"Japan","JP",129.734207272727,112,392,"JPN","Japon",19,0.925
+"Kazakhstan","KZ",122.087506352087,113,398,"KAZ","Kazakhstan",56,0.811
+"Latvia","LV",120.582616636528,123,428,"LVA","Lettonie",39,0.863
+"Lithuania","LT",118.904179347826,127,440,"LTU","Lituanie",35,0.875
+"Luxembourg","LU",124.426866520788,128,442,"LUX","Luxembourg",17,0.93
+"Malaysia","MY",121.055072727273,132,458,"MYS","Malaisie",62,0.803
+"Mexico","MX",127.827172101449,139,484,"MEX","Mexique",86,0.758
+"Morocco","MA",117.052836956522,144,504,"MAR","Maroc",123,0.683
+"Netherlands","NL",129.411508166969,150,528,"NLD","Pays-Bas",10,0.941
+"New Zealand","NZ",123.754406533575,155,554,"NZL","Nouvelle-Zélande",13,0.937
+"Nicaragua","NI",120.44724954792,156,558,"NIC","Nicaragua",126,0.667
+"Nigeria","NG",117.207963768116,158,566,"NGA","Nigéria",163,0.535
+"Norway","NO",125.313217785844,161,578,"NOR","Norvège",2,0.961
+"Pakistan","PK",109.346618444846,167,586,"PAK","Pakistan",161,0.544
+"Panama","PA",121.53955615942,168,591,"PAN","Panama",61,0.805
+"Paraguay","PY",122.429787658802,170,600,"PRY","Paraguay",105,0.717
+"Peru","PE",118.6557676951,171,604,"PER","Pérou",84,0.762
+"Philippines","PH",119.083561818182,172,608,"PHL","Philippines",116,0.699
+"Poland","PL",123.039326678766,174,616,"POL","Pologne",34,0.876
+"Portugal","PT",126.229789090909,175,620,"PRT","Portugal",38,0.866
+"Republic of Korea","KR",116.524347197107,117,410,"KOR","République de Corée",19,0.925
+"Romania","RO",132.350173598553,181,642,"ROU","Roumanie",53,0.821
+"Saudi Arabia","SA",119.323452898551,192,682,"SAU","Arabie Saoudite",35,0.875
+"Singapore","SG",119.959467391304,196,702,"SGP","Singapour",12,0.939
+"Slovakia","SK",130.933779385172,197,703,"SVK","Slovaquie",45,0.848
+"South Africa","ZA",115.523803603604,201,710,"ZAF","Afrique du Sud",109,0.713
+"Spain","ES",126.352210909091,203,724,"ESP","Espagne",27,0.905
+"Sweden","SE",123.775625454545,209,752,"SWE","Suède",7,0.947
+"Switzerland","CH",119.546467391304,210,756,"CHE","Suisse",1,0.962
+"Taiwan","TW",124.045487318841,45,158,"TWN","Taïwan",NA,NA
+"Thailand","TH",132.772262681159,213,764,"THA","Thaïlande",66,0.8
+"Turkey","TR",124.689729582577,220,792,"TUR","Turquie",48,0.838
+"Ukraine","UA",121.370564428312,225,804,"UKR","Ukraine",77,0.773
+"United Arab Emirates","AE",116.938820976492,218,784,"ARE","Émirats Arabes Unis",26,0.911
+"United Kingdom","GB",122.871318181818,228,826,"GBR","Royaume-Uni",18,0.929
+"United States","US",124.289381555154,231,840,"USA","États-Unis",21,0.921
+"Uruguay","UY",112.891649090909,234,858,"URY","Uruguay",58,0.809
+"Venezuela","VE",121.672327898551,236,862,"VEN","Venezuela",120,0.691
+"Vietnam","VN",121.777684210526,198,704,"VNM","Viet Nam",115,0.703
+NA,"",119.858260869565,NA,NA,NA,NA,NA,NA
