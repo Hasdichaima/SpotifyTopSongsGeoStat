@@ -2,64 +2,47 @@ install.packages("ade4")
 install.packages("factoextra")
 install.packages("dplyr")
 install.packages("ggplot2")
-
+install.packages("fmsb")
 
 library(ade4)
 library(ggplot2)
 library(factoextra)
 library(dplyr)
-
-music_spotify <-  read.csv("/Users/fosio/Desktop/GeoDataScience/projet_stat/universal_top_spotify_songs.csv")
+library(fmsb)
 
 #Histogramme
 
 # a voir
-hist(music_spotify$danceability)
-hist(music_spotify$loudness)
-hist(music_spotify$instrumentalness)
-hist(music_spotify$liveness)
+#hist(music_spotify$danceability)
+#hist(music_spotify$loudness)
+#hist(music_spotify$instrumentalness)
+#hist(music_spotify$liveness)
+#hist(music_spotify$popularity)
+#hist(music_spotify$duration_ms)
+#hist(music_spotify$energy)
+#hist(music_spotify$key)
+#hist(music_spotify$mode)
+#hist(music_spotify$speechiness)
+#hist(music_spotify$acousticness)
+#hist(music_spotify$valence)
+#hist(music_spotify$tempo)
 
-# popularité supérieur à 40
-music_spotify <- filter(music_spotify, popularity > 40 &
-                          country != '' &
-                          speechiness < 0.4 &
-                          duration_ms < 350000 &
-                          energy > 0.2 &
-                          tempo > 50 & tempo < 200 )
+music_spotify <-  read.csv("/Users/fosio/Desktop/GeoDataScience/projet_stat/universal_top_spotify_songs.csv")
 
-#popularité entre 50 et 70
-#music_spotify <- filter(music_spotify, popularity > 50 & popularity < 70 &
-#                          country != '' &
- #                         speechiness < 0.4 &
-  #                        duration_ms < 350000 &
-   #                       energy > 0.2 &
-    #                      tempo > 50 & tempo < 200 )
+# sélection des variables numériques
+music_spotify_num <- select(music_spotify, where(is.numeric))
+# filtrage des attributs inutiles pour notre étude
+music_spotify_num <- music_spotify_num %>% select(-daily_movement, -weekly_movement, -time_signature, -daily_rank)
 
 
 #avoir des infos statistiques sur les données
 #summary(music_spotify)
 
-# sélection des variables numériques
-music_spotify_num <- select(music_spotify, where(is.numeric))
-View(music_spotify)
-head(music_spotify_num)
-
-#suppression des variables pas intéréssantes pour notre étude 
-music_spotify_num <- music_spotify_num %>% select(-daily_movement, -weekly_movement, -time_signature, -daily_rank)
-music_spotify_num <- music_spotify_num %>% select(-mode, -key, -instrumentalness)
-#music_spotify_num <- music_spotify_num %>% select(-instrumentalness, -liveness, -duration_ms)
-
-head(music_spotify_num)
-View(music_spotify_num)
-
-new_data <- music_spotify_num[1:1000,]
-hist(new_data$popularity)
-ggpairs(new_data)
-
+#########################
 
 #ACP
+
 dataACP <- music_spotify_num
-dataACP <- new_data
 View(dataACP)
 
 # matrice variance covariance
@@ -81,8 +64,9 @@ for (colonne in colnames(dataACP)) {
   dataACP[[colonne]] <- center_reduce(dataACP[[colonne]])
 }
 
+
 #test si c'est égale à 1
-var(dataACP$danceability)
+var(dataACP$popularity)
 
 #Calcul ACP
 resultACP <- dudi.pca(df = dataACP, scannf = 'False', nf = 4)
