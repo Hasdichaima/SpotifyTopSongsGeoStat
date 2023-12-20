@@ -14,7 +14,8 @@ spotifydb <- read.csv('data/universal_top_spotify_songs/universal_top_spotify_so
 data_spotify_summary <- spotifydb %>%
   group_by(country) %>%
   summarise(
-    moyenne_tempo = mean(tempo, na.rm = TRUE)
+    moyenne_tempo = mean(tempo, na.rm = TRUE),
+    median_tempo  = median(tempo, na.rm = TRUE)
   )
 
 # Fusionner les données de spotify et codeIso 
@@ -30,7 +31,7 @@ spotifyIsoHDI <- merge(data_spotify_Iso, hdiCountries, by.x = "noms_en_gb", by.y
 data_spotify_Iso_HDI <- spotifyIsoHDI %>% filter(!is.na(moyenne_tempo) & moyenne_tempo != "")
 
 # Sauvegarder le dataframe en tant que fichier CSV
-write.csv(data_spotify_Iso_HDI, file = "spotify_ISO_IDH_Oct_carto.csv", row.names = FALSE)
+#write.csv(data_spotify_Iso_HDI, file = "spotify_ISO_IDH_Oct_carto.csv", row.names = FALSE)
 
 # Enlever les enregistrements n'ayant pas de country et idh
 filtered_data <- data_spotify_Iso_HDI %>% filter(!is.na(HDI_value) | !HDI_value == "")
@@ -62,8 +63,17 @@ carte <- leaflet() %>%
                 textsize = "15px",
                 direction = "auto"
               ),
-              popup = ~paste("Pays: ", noms_en_gb, "<br>IDH: ", HDI_value)
+              popup = ~paste("Pays: ", noms_en_gb, "<br>IDH: ", HDI_value,  "<br>Tempo moyen: ", moyenne_tempo,  "<br>Tempo median: ", median_tempo )
   )
 
 # Afficher la carte
 carte
+
+# Calculer la régression linéaire
+modele <- lm(moyenne_tempo ~ HDI_value, data=songs_pays_spotify)
+
+# Nuage de points avec la ligne de régression
+plot(songs_pays_spotify$HDI_value, songs_pays_spotify$moyenne_tempo, 
+     xlab = "IDH", ylab = "Tempo",
+     main = "Relation entre l'IDH et le tempo")
+abline(modele, col = "red")  # Ajouter la ligne de régression
