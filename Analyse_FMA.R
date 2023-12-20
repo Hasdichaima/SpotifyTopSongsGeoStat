@@ -37,7 +37,7 @@ for (n in names(tracks_final_noNA_num)) {
 
 #Création du subset 
 #On sélectionne les 1000 premières lignes
-subset_tracks_final_noNA = tracks_final_noNA[1:1000,]
+subset_tracks_final_noNA = tracks_final_noNA_num[1:1000,]
 
 #nom et type de données du dataset
 str(subset_tracks_final_noNA)
@@ -45,25 +45,14 @@ str(subset_tracks_final_noNA)
 #avoir des infos statistiques sur les données (quartiles, médiane, moyenne pour chaque attribut...)
 summary(subset_tracks_final_noNA)
 
-#Sélection des variables numériques
-subtracks_final_noNA_num <- select(subset_tracks_final_noNA, where(is.numeric))
-head(subtracks_final_noNA_num)
-
-#Suppression des variables "track_id", "latitude_artist", "longitude_artist"
-subtracks_final_noNA_num <- subtracks_final_noNA_num %>% 
-  select(
-    -track_id, 
-    -latitude_artist,
-    -longitude_artist)
-
 #Tri des entités selon leur répartition par attributs dans les histogrammes
-for (n in names(subtracks_final_noNA_num)) {
+for (n in names(subset_tracks_final_noNA)) {
   print(n)
-  DonnéesFMA <- pull(subtracks_final_noNA_num, n)
+  DonnéesFMA <- pull(subset_tracks_final_noNA, n)
   hist(DonnéesFMA, main = n)
 }
 
-tracks_selection <- subtracks_final_noNA_num %>% 
+tracks_selection <- subset_tracks_final_noNA %>% 
   filter(
     duration < 600 &
     favorites <= 25 &
@@ -124,6 +113,16 @@ abline(RL_LF, col = 'red')
 #p-value bonne car p-value < 2.2e-16 et R² (coefficient de détermination linéaire) = 0.37 donc
 # qualité de la régression assez faible 
 
+#RADARCHART MEDIANE DE TOUS LES ATTRIBUTS NUMERIQUES DES CHANSONS FMA
+
+#Suppression des variables "listens" et "favorites" car pas possible de les comparer
+# aux attributs musicales
+
+subtracks_radarchart <- subset_tracks_final_noNA %>% 
+  select(
+    -listens,
+    -favorites)
+
 #normalisation
 center_reduce <- function(x){
   avg <- mean(x, na.rm = TRUE)
@@ -131,23 +130,34 @@ center_reduce <- function(x){
   return((x-avg)/ET)
 }
 
-for (colonne in colnames(tracks_selection)){
-  tracks_selection[[colonne]] <- abs(center_reduce(tracks_selection[[colonne]]))
+for (colonne in colnames(subtracks_radarchart)){
+  subtracks_radarchart[[colonne]] <- abs(center_reduce(subtracks_radarchart[[colonne]]))
 }
 
-df_mediane <- tracks_selection %>% 
+df_mediane <- subtracks_radarchart %>% 
   summarise(
     across(everything(), median))
 rownames(df_mediane) <- "Mediane"
 
-max_min <- matrix(c(1,0), nrow = 2, ncol = ncol(tracks_selection))
-colnames(max_min) <- names(tracks_selection)
+max_min <- matrix(c(1,0), nrow = 2, ncol = ncol(subtracks_radarchart))
+colnames(max_min) <- names(subtracks_radarchart)
 rownames(max_min) <- c("Max", "Min")
 
 df <- rbind(max_min, df_mediane)
 
-df_final <- df[c("Mediane", )]
-radarchart(df)
+radarchart(df, caxislabels = c(0,0.25,0.5,0.75,1),
+           axistype = 1,
+           # Personnaliser le polygone
+           pcol = 'red', 
+           pfcol = scales::alpha('red', 0.5), 
+           plwd = 2, plty = 1,
+           # Personnaliser la grille
+           cglcol = 'grey', cglty = 1, cglwd = 0.8,
+           # Personnaliser l'axe
+           axislabcol = "grey", 
+           # Étiquettes des variables
+           #vlcex = 'test', vlabels = 'test1',
+           title = 'Profil des chansons FMA')
 
 
 #------------------------------------------------------------------------------------
