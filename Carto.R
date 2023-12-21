@@ -54,7 +54,7 @@ songs_pays_spotify <- songs_pays %>%
   filter(!is.na(moyenne_tempo))
 
 # Créer une palette de couleurs pour l'IDH
-palette_couleurs <- colorNumeric(palette = "Blues", domain = songs_pays_spotify$HDI_value)
+palette_couleurs <- colorNumeric(palette = "Blues", domain = songs_pays_spotify$moyenne_tempo)
 
 # Convertir votre dataframe en objet sf
 songs_pays_spotify_sf <- st_as_sf(songs_pays_spotify)
@@ -69,7 +69,7 @@ centroid_coords <- st_coordinates(centroids)
 carte <- leaflet() %>%
   addProviderTiles("CartoDB.Positron") %>% 
   addPolygons(data = songs_pays_spotify, 
-              fillColor = ~palette_couleurs(HDI_value),
+              fillColor = ~palette_couleurs(moyenne_tempo),
               fillOpacity = 0.7,
               color = "white",
               stroke = TRUE,
