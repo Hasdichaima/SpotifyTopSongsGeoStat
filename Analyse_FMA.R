@@ -194,7 +194,11 @@ tracks_median_continent <- tracks_world %>%
   mutate(continent = ifelse(is.na(continent), "Other", continent)) %>%
   select(-continent)
   
-View(tracks_median_continent)
+View(tracks_median_continent) 
+
+tracks_continent <- tracks_world %>% group_by(continent) %>%
+  summarise(num_continent = n())
+View(tracks_continent)
 
 max_min <- matrix(c(1,0), nrow = 2, ncol = ncol(tracks_median_continent))
 colnames(max_min) <- names(tracks_median_continent)
@@ -202,6 +206,8 @@ rownames(max_min) <- c("Max", "Min")
 rownames(tracks_median_continent) <- c("Afrique", "Amérique", "Asie", "Europe", "Océanie", "Autre")
 df_continent <- rbind(max_min, tracks_median_continent)
 View(df_continent)
+
+
 
 radarchart(df_continent, caxislabels = c(0,0.25,0.5,0.75,1),
            axistype = 1,
