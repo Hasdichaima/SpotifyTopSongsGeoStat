@@ -138,14 +138,30 @@ plot(top_chanson_pays_iso_idh$HDI_value, top_chanson_pays_iso_idh$daily_rank,
 abline(modele_top_chanson, col = "red")  # Ajouter la ligne de régression
 
 #Afficher ce lien cartographiquement 
+#write.csv(top_chanson_pays_iso_idh_pays, file = "C:/Users/hasdi/OneDrive/Desktop/Projet Proba Stat/top_chanson_pays_iso_idh_pays.csv", row.names = FALSE)
+my_data <- top_chanson_pays_iso_idh_pays
+# Convertir le champ 'geometry' en un objet 'sf'
+data_sf <- st_as_sf(my_data, wkt = "geometry")
 
-# Convertir le dataframe en un objet 'sf'
-data_sf <- st_as_sf(top_chanson_pays_iso_idh_pays)
+# Calculer les centroïdes des polygones (centres des pays)
+data_centroids <- st_centroid(data_sf)
 
-# Créer la carte
+
+# Inverser le classement pour une meilleure représentation (les meilleurs classements auront de plus grandes tailles)
+data_centroids$normalized_rank <- 1 / my_data$daily_rank
+
+# Transformez les classements en utilisant le logarithme
+data_centroids$log_rank <- log(data_centroids$normalized_rank + 1)  # Ajout de 1 pour éviter le logarithme de 0
+
+# Utilisez les résultats transformés comme taille des bulles
+data_centroids$size <- data_centroids$log_rank * 5  
+
+# Créer la carte avec les bulles positionnées sur les centroïdes et une échelle logarithmique pour la taille des bulles
 ggplot() +
-  geom_sf(data = data_sf, aes(fill = daily_rank), color = "white") + # Dégradé de couleur basé sur la popularité
-  scale_fill_gradient(low = "lightblue", high = "darkblue", name = "Popularity") + # Choix du dégradé de couleur
-  labs(title = "Popularité de la chanson par pays", caption = "Source: Votre source de données") + # Titre et légende
-  theme_minimal() + # Style minimal du graphique
-  geom_sf_text(aes(label = top_chanson_pays_iso_idh_pays$HDI_value), size = 3, color = "black", check_overlap = TRUE) # Affichage de l'IDH en texte
+  geom_sf(data = data_sf, aes(fill = HDI_value), color = "white") +
+  scale_fill_gradient(low = "red", high = "green", name = "IDH") +
+  labs(title = "Popularité de la chanson par pays", caption = "Source: Données Spotify & IDH du UNDP") +
+  theme_minimal() +
+  geom_point(data = data_centroids, aes(x = st_coordinates(data_centroids)[, 1], y = st_coordinates(data_centroids)[, 2], size = size), color = "black", alpha = 0.5) +
+  scale_size(name = "Populrité", guide = "legend") +
+  labs(size = "Taille des bulles", x="Longitude", y="Latitude")
