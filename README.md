@@ -7,7 +7,7 @@
 - **Données IDH** : https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fhdr.undp.org%2Fsites%2Fdefault%2Ffiles%2F2021-22_HDR%2FHDR21-22_Statistical_Annex_HDI_Table.xlsx&wdOrigin=BROWSELINK
 - **Données pays du monde format SHP** : https://public.opendatasoft.com/explore/dataset/world-administrative-boundaries/table/
 - **Dossier github "documentation"** : Regroupe des documents en complément intéressants pour notre étude
-- **image_resultats** : Regroupe toutes les images utilisées dans le rapport
+- **Dossier github "image_resultats"** : Regroupe toutes les images utilisées dans le rapport
 
 ## Objectifs de l'analyse : 
 L'objectif de cette étude est de comparer deux jeux de données : un venant de l'API Spotify (téléchargé sur le site *Kaggle*) avec le Top 50 des chansons de 70 pays différent (dont le classement global) et un autre venant du site *https://freemusicarchive.org/home* (téléchargé sur le répertoire github de Mr Michaël Defferrard), une plateforme d'hébergement de musiques amateurs. 
