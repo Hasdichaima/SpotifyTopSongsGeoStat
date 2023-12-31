@@ -59,7 +59,7 @@ palette_couleurs <- colorNumeric(palette = "Blues", domain = songs_pays$HDI_valu
 # Convertir votre dataframe en objet sf
 songs_pays_spotify_sf <- st_as_sf(songs_pays)
 
-# Obtenir les centroïdes des ppays
+# Obtenir les centroïdes des pays
 centroids <- st_centroid(songs_pays_spotify_sf)
 
 # Extraire les coordonnées des centroïdes
@@ -71,7 +71,7 @@ centroids$size <- log(centroids$moyenne_danceability + 1)  # Ajout de 1 pour év
 
 
 
-################Test 1##################
+#############################Carte avec Leaflet#############################
 # Création de la carte Leaflet
 carte <- leaflet() %>%
   addProviderTiles("CartoDB.Positron") %>%
@@ -101,39 +101,8 @@ carte <- leaflet() %>%
 # Afficher la carte
 carte
 
-################Test 2##################
-# Créer la carte Leaflet avec les centroïdes pour positionner les bulles
-carte <- leaflet() %>%
-  addProviderTiles("CartoDB.Positron") %>% 
-  addPolygons(data = songs_pays_spotify, 
-              fillColor = ~palette_couleurs(moyenne_danceability),
-              fillOpacity = 0.7,
-              color = "white",
-              stroke = TRUE,
-              weight = 1,
-              label = ~noms_en_gb,
-              labelOptions = labelOptions(
-                style = list("font-weight" = "normal", padding = "3px 8px"),
-                textsize = "15px",
-                direction = "auto"
-              ),
-              popup = ~paste("Pays: ", noms_en_gb, "<br>IDH: ", HDI_value,  "<br>Tempo moyen: ", moyenne_tempo,  "<br>Tempo median: ", median_tempo )
-  ) %>%
-  addCircles(data = as.data.frame(centroid_coords), # Utiliser les centroïdes comme données pour les bulles
-             lat = ~Y,  # Latitude du centroïde
-             lng = ~X,  # Longitude du centroïde
-             radius = ~songs_pays_spotify$HDI_value * 100,  
-             color = "brown",  
-             fillOpacity = 0.7,
-             popup = ~paste("Pays: ", songs_pays_spotify$noms_en_gb, "<br>Danceability: ", songs_pays_spotify$moyenne_danceability)
-  )
 
-
-# Afficher la carte
-carte
-
-###########Test 3###########
-# Créer le graphique ggplot
+#############################Carte avec ggplot#############################
 # Charger un fond de carte
 map_world <- map_data("world") # Charger les données mondiales
 
@@ -227,7 +196,7 @@ ggplot() +
   labs(title = "Popularité de la chanson par pays", caption = "Source: Données Spotify & IDH du UNDP") +
   theme_minimal() +
   geom_point(data = data_centroids, aes(x = st_coordinates(data_centroids)[, 1], y = st_coordinates(data_centroids)[, 2], size = size), color = "black", alpha = 0.5) +
-  scale_size(name = "Populrité", guide = "legend") +
+  scale_size(name = "Popularité", guide = "legend", breaks = c(1, 2, 3), labels = c("Faible", "Moyenne", "Élevée")) +
   labs(size = "Taille des bulles", x="Longitude", y="Latitude")
 
 # Calculer la corrélation entre l'IDH et la danceability
@@ -237,19 +206,34 @@ correlation_idh_popularity <- cor(my_data$HDI_value, my_data$daily_rank, use = "
 print(correlation_idh_popularity)
 
 # Visuliser les résidus 
-
 # Calculer les résidus
 residus <- residuals(modele_top_chanson)
 
 # Joindre les résidus avec les données géographiques des pays
 top_chanson_pays_iso_idh$residus <- residus
 
-# Créer la carte avec les résidus positionnés sur les centroïdes des pays
+# Fusionner ces données avec ceux des codeIso 
+top_1_chanson_pays_iso_idh_residus <- merge(pays, top_chanson_pays_iso_idh, by.x ="iso3", by.y ="alpha3", all = TRUE)
+
+# Convertir votre dataframe en objet sf
+top_1_chanson_pays_iso_idh_sf <- st_as_sf(top_1_chanson_pays_iso_idh_residus)
+
+# Obtenir les centroïdes des pays auquels nous avons calculé les residus
+centroids_residus <- st_centroid(top_1_chanson_pays_iso_idh_sf)
+
+##########test 1
 ggplot() +
-  geom_sf(data = top_chanson_pays_iso_idh ,aes(fill = HDI_value), color = "white") +
+  geom_sf(data = top_1_chanson_pays_iso_idh_residus, aes(fill = HDI_value), color = "white") +
   scale_fill_gradient(low = "red", high = "green", name = "IDH") +
-  labs(title = "Résidus de la régression linéaire entre l'IDH et la popularité des chansons", caption = "Source: Données Spotify & IDH du PNUD") +
+  labs(title = "Carte des résidus popularité/IDH", caption = "Source: Données Spotify & IDH du UNDP") +
   theme_minimal() +
-  geom_point(data = data_centroids, aes(x = st_coordinates(data_centroids)[, 1], y = st_coordinates(data_centroids)[, 2], size = residus), color = "black", alpha = 0.5) +
+  
+  # Ajouter les bulles de taille variable pour les résidus sur les centroides
+  geom_point(data = centroids_residus, aes(x = st_coordinates(centroids_residus)[, 1], 
+                                        y = st_coordinates(centroids_residus)[, 2], 
+                                        size = residus), 
+             color = "black", alpha = 0.5) +
+  
+  # Ajuster la taille des bulles selon les résidus
   scale_size(name = "Résidus", guide = "legend") +
-  labs(size = "Taille des bulles", x="Longitude", y="Latitude")
+  labs(size = "Taille des bulles", x = "Longitude", y = "Latitude")
