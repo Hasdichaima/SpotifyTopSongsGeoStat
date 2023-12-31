@@ -235,3 +235,21 @@ correlation_idh_popularity <- cor(my_data$HDI_value, my_data$daily_rank, use = "
 
 # Afficher la corrélation
 print(correlation_idh_popularity)
+
+# Visuliser les résidus 
+
+# Calculer les résidus
+residus <- residuals(modele_top_chanson)
+
+# Joindre les résidus avec les données géographiques des pays
+top_chanson_pays_iso_idh$residus <- residus
+
+# Créer la carte avec les résidus positionnés sur les centroïdes des pays
+ggplot() +
+  geom_sf(data = top_chanson_pays_iso_idh ,aes(fill = HDI_value), color = "white") +
+  scale_fill_gradient(low = "red", high = "green", name = "IDH") +
+  labs(title = "Résidus de la régression linéaire entre l'IDH et la popularité des chansons", caption = "Source: Données Spotify & IDH du PNUD") +
+  theme_minimal() +
+  geom_point(data = data_centroids, aes(x = st_coordinates(data_centroids)[, 1], y = st_coordinates(data_centroids)[, 2], size = residus), color = "black", alpha = 0.5) +
+  scale_size(name = "Résidus", guide = "legend") +
+  labs(size = "Taille des bulles", x="Longitude", y="Latitude")
