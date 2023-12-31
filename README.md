@@ -14,9 +14,11 @@ L'objectif de cette étude est de comparer deux jeux de données : un venant de 
 Cette comparaison reposant sur la problématique suivante : **Quels sont les facteurs contribuant à la popularité d’une musique considérée comme un hit comparés à une chanson amateur selon différentes échelles spatiales ?**
 
 ## Méthodologies et résultats de l'analyse :
-Pour consulter la méthodologie et les résultats de cette analyse, le rapport *nom_a_compléter* et la présentation *nom_a_completer* sont disponibles dans le répertoire github ainsi que les codes R. La documentation y est disponible dans ces derniers.
+Pour consulter la méthodologie et les résultats de cette analyse, le rapport *Rapport Projet Géostat ING3 Spotify_FMA* et la présentation *Présentation projet Géostatistique Spotify vs FMA* sont disponibles dans le dossier "Rapport & Présentation" du répertoire github ainsi que les codes R.
 
-- "CleanMusicData" : **A SUPPRIMER ?** --> Utiliser les codes R pour y accéder.
-
-- "data" : **A SUPPRIMER** --> **Bien vérifier que les codes R sont fonctionnels !**
-
+## Les différents dossiers du répertoire
+- "Codes R" : Dossier dans lequel sont répertoriés tous les scripts en language R de l'étude
+- "Final_Data" : Dossier où se trouve les données finales utilisées pour les méthodes d'analyses. Le choix de garder ce dossier s'est décidé afin d'éviter de devoir refaire "runner" tout le code et pouvoir les utiliser directement
+- "Rapport & Présentation" : voir section précédente
+- "documentation" : Dossier où il est possible de retrouver un article scientifique qui a servis pour la définition des différents attributs utilisés dans les analyses ainsi que le dictionnaires des métadonnées des attributs.
+- "image_resultats" : Dossier regroupant toutes les images utilisées dans le rapport et la présentation du sujet d'étude
