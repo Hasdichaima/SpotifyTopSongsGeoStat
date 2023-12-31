@@ -70,3 +70,10 @@ echonest{
     "tempo" : [float ; nombre de beats/min soit la vitesse de la chanson ; "" ; "" ],
     "valence" : [float ; mesure de la positivité d'une chanson ; de 0 (musique à tendance négative comme de la tristesse, de la colère) à 1 (musique à tendance positive comme l’euphorie, la joie, la gratitude)" ; "inférieur à 0 ou supérieur à 1"]
 }
+
+World administrative boundaries{
+    "name" : [str ; nom du pays en anglais ; "" ; "" ],
+    "continent" : [str ; nom du continent où se trouve le pays ; "" ; ""], 
+    "region" : [str ; nom de la région où se situe le pays ; "Eastern Africa, Central Asia .." ; "" ],
+    "french_shor" : [str ; nom du pays en français ; "" ; ""]
+}
